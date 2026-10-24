@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>专利指南 · 从想法到权利</title>
+<meta name="description" content="面向个人发明人和学生的一站式专利科普与申请指引：讲清专利是什么、三种类型、申请全流程、常见问题解决，以及合规的官方渠道——依据《专利法》及国家知识产权局公开规定整理。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1b2d'/%3E%3Cpath d='M10 22V10l12 12V10' stroke='%23c89b3c' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+/* ============ tokens ============ */
+:root{
+  --ink:#102030;
+  --ink-2:#223a52;
+  --navy:#12335b;
+  --navy-2:#1b4f7f;
+  --navy-soft:#e8eff6;
+  --gold:#b8862e;
+  --gold-2:#d9ab4f;
+  --gold-soft:#f6ecd6;
+  --paper:#f8f7f4;
+  --paper-2:#fffdfa;
+  --line:#e2e0da;
+  --line-strong:#c9c6bd;
+  --muted:#5b6a7c;
+  --ok:#2e7d4f;
+  --warn:#b34a1f;
+  --card-shadow:0 1px 2px rgba(16,32,48,.05),0 10px 28px -18px rgba(16,32,48,.28);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--navy-2);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font-family:inherit}
+::selection{background:var(--gold-soft);color:var(--ink)}
+.container{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+.serif{font-family:var(--serif)}
+
+/* ============ top nav ============ */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .container{display:flex;align-items:center;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--ink);font-size:17px}
+.brand .mark{width:30px;height:30px;flex:none}
+.brand b{font-family:var(--serif);font-weight:700}
+.topnav{display:flex;gap:4px;margin-left:auto}
+.topnav a{font-size:14.5px;color:var(--ink-2);padding:7px 11px;border-radius:9px;font-weight:500}
+.topnav a:hover{background:var(--navy-soft);color:var(--navy);text-decoration:none}
+.nav-toggle{display:none;margin-left:auto;background:none;border:1px solid var(--line-strong);border-radius:9px;width:40px;height:40px;cursor:pointer;color:var(--ink)}
+.nav-toggle svg{width:20px;height:20px}
+@media(max-width:820px){
+  .topnav{position:absolute;top:64px;left:0;right:0;flex-direction:column;background:#fff;border-bottom:1px solid var(--line);padding:8px 14px;gap:2px;display:none;box-shadow:0 14px 30px -22px rgba(16,32,48,.5)}
+  .topnav.open{display:flex}
+  .nav-toggle{display:inline-flex;align-items:center;justify-content:center}
+}
+
+/* ============ hero ============ */
+.hero{position:relative;color:#fff;background:
+  radial-gradient(1200px 600px at 85% -10%,rgba(201,155,60,.22),transparent 60%),
+  radial-gradient(900px 520px at -10% 10%,rgba(27,79,127,.55),transparent 60%),
+  linear-gradient(160deg,#0b1a2e,#12335b 60%,#0d2a4a);
+  overflow:hidden;padding:64px 0 76px}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:26px 26px}
+.hero .container{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.14em;color:var(--gold-2);font-weight:600;margin-bottom:16px}
+.hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 0 4px rgba(217,171,79,.18)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4.6vw,52px);line-height:1.18;margin-bottom:18px}
+.hero h1 .gold{color:var(--gold-2)}
+.hero-sub{font-size:clamp(15px,1.5vw,18px);color:#d6e2ee;max-width:54ch;margin-bottom:26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-weight:600;font-size:15px;border-radius:11px;padding:12px 20px;transition:transform .15s,box-shadow .15s}
+.btn svg{width:17px;height:17px}
+.btn-gold{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#2b2008;box-shadow:0 10px 24px -12px rgba(201,155,60,.7)}
+.btn-ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.btn:hover{transform:translateY(-2px)}
+.hero-stats{display:flex;gap:0;margin-top:34px;border-top:1px solid rgba(255,255,255,.14);padding-top:22px;flex-wrap:wrap}
+.hero-stats .stat{padding:0 26px;border-right:1px solid rgba(255,255,255,.14)}
+.hero-stats .stat:first-child{padding-left:0}
+.hero-stats .stat:last-child{border-right:none;padding-right:0}
+.hero-stats .num{font-family:var(--serif);font-weight:700;font-size:30px;color:#fff;line-height:1}
+.hero-stats .num small{font-size:16px;color:var(--gold-2)}
+.hero-stats .lab{font-size:12.5px;color:#a9bfd4;margin-top:6px}
+
+/* hero animation: idea -> flow -> certificate */
+.stage{position:relative;min-height:340px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden}
+.stage-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px}
+.flow-track{position:relative;width:100%;max-width:340px;height:250px}
+.flow-rail{position:absolute;left:50%;top:8px;bottom:8px;width:2px;transform:translateX(-50%);background:rgba(255,255,255,.15);border-radius:2px}
+.flow-fill{position:absolute;left:50%;top:8px;width:2px;transform:translateX(-50%);background:linear-gradient(180deg,var(--gold-2),var(--gold));border-radius:2px;height:0;animation:fillRail 7s ease-in-out infinite}
+@keyframes fillRail{0%{height:0}55%{height:calc(100% - 14px)}75%{height:calc(100% - 14px)}100%{height:0}}
+.flow-node{position:absolute;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:#1d3b5c;border:2px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;z-index:2;transition:background .4s,border-color .4s}
+.flow-node svg{width:16px;height:16px;stroke:#a9c2d9}
+.flow-node .tl{position:absolute;left:46px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:13px;color:#cfe0ef;font-weight:600}
+.flow-node .tl.tl-l{left:auto;right:46px}
+.flow-node.on{background:var(--gold);border-color:var(--gold-2);box-shadow:0 0 0 6px rgba(217,171,79,.16)}
+.flow-node.on svg{stroke:#2b2008}
+.flow-node.on .tl{color:#fff}
+.cert-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.cert{opacity:0;transform:scale(.6) translateY(10px);width:216px;background:linear-gradient(180deg,#fffdf6,#f5efdd);border:1px solid #d9c99a;border-radius:12px;padding:16px 18px;box-shadow:0 24px 46px -18px rgba(0,0,0,.5);text-align:center;transition:opacity .5s,transform .5s}
+.cert .crown{font-family:var(--serif);font-size:13px;color:#8a6b1f;letter-spacing:.2em;margin-bottom:6px}
+.cert .c-title{font-family:var(--serif);font-weight:700;font-size:17px;color:#3a2c08;margin-bottom:2px}
+.cert .c-line{height:1px;background:linear-gradient(90deg,transparent,#b8862e,transparent);margin:10px 0}
+.cert .c-meta{font-size:11px;color:#7a6a3a;line-height:1.7}
+.cert .c-stamp{margin:10px auto 2px;width:52px;height:52px;border:2.5px solid #c0392b;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#c0392b;font-size:9px;line-height:1.25;transform:rotate(-12deg);opacity:.92}
+@keyframes showCert{0%,58%{opacity:0;transform:scale(.6) translateY(10px)}68%,86%{opacity:1;transform:scale(1) translateY(0)}100%{opacity:0;transform:scale(1.02) translateY(0)}}
+.cert{animation:showCert 7s ease-in-out infinite}
+.stage-caption{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:12px;color:#9db3c7}
+
+/* ============ section base ============ */
+section{padding:70px 0}
+.sec-head{max-width:760px;margin-bottom:38px}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--navy-2);text-transform:uppercase;margin-bottom:12px}
+.sec-eyebrow .n{font-family:var(--serif);color:var(--gold);font-size:15px}
+.sec-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(25px,3.2vw,36px);line-height:1.25;color:var(--ink)}
+.sec-head .lead{color:var(--muted);font-size:16.5px;margin-top:12px}
+.alt{background:var(--paper-2)}
+
+/* ============ what / definition ============ */
+.def-card{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:stretch}
+.def-main{background:linear-gradient(180deg,#fff,#f4f0e6);border:1px solid var(--line);border-radius:var(--r);padding:30px 30px 26px;box-shadow:var(--card-shadow)}
+.def-main .big{font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);line-height:1.55;color:var(--ink)}
+.def-main .big em{font-style:normal;color:var(--navy-2);font-weight:600}
+.def-main .src{font-size:12.5px;color:var(--muted);margin-top:14px;border-top:1px dashed var(--line-strong);padding-top:12px}
+.def-side{display:grid;gap:14px}
+.def-chip{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.def-chip .k{font-size:12px;font-weight:700;color:var(--navy-2);letter-spacing:.06em;margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.def-chip .k svg{width:15px;height:15px}
+.def-chip .v{font-size:14.5px;color:var(--ink-2);line-height:1.65}
+
+/* ============ types comparison ============ */
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.type-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 22px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--card-shadow);position:relative;overflow:hidden}
+.type-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--type-c,var(--navy-2))}
+.type-card .ico{width:46px;height:46px;border-radius:12px;background:var(--type-soft,var(--navy-soft));display:flex;align-items:center;justify-content:center}
+.type-card .ico svg{width:24px;height:24px;stroke:var(--type-c,var(--navy-2))}
+.type-card h3{font-family:var(--serif);font-size:21px;color:var(--ink)}
+.type-card .tag{font-size:12px;color:var(--navy-2);font-weight:700;background:var(--navy-soft);display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:20px;width:max-content}
+.type-card .desc{font-size:14.5px;color:var(--ink-2);line-height:1.7}
+.type-card .row{display:flex;justify-content:space-between;font-size:13.5px;border-top:1px dashed var(--line);padding-top:10px}
+.type-card .row .k{color:var(--muted)}
+.type-card .row .v{font-weight:600;color:var(--ink)}
+.type-card .apply{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.type-card .apply b{color:var(--ink-2);font-weight:600}
+
+/* ============ why ============ */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.why-item{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;box-shadow:var(--card-shadow)}
+.why-item .ico{width:42px;height:42px;border-radius:11px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.why-item .ico svg{width:21px;height:21px;stroke:var(--gold)}
+.why-item h4{font-size:17px;color:var(--ink);margin-bottom:7px}
+.why-item p{font-size:13.5px;color:var(--muted);line-height:1.65}
+.why-note{max-width:760px;font-size:14px;color:var(--muted);margin-top:22px;border-left:3px solid var(--gold);padding-left:16px}
+
+/* ============ flow timeline ============ */
+.flow-wrap{position:relative}
+.flow-line{display:grid;grid-template-columns:88px 44px 1fr;gap:0}
+.flow-line .t{padding:26px 0 0;font-family:var(--serif);font-weight:700;color:var(--navy-2);font-size:15px;text-align:right;line-height:1.3}
+.flow-line .ax{position:relative;display:flex;justify-content:center}
+.flow-line .ax .dot{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--navy-2);z-index:2;align-self:center;box-shadow:0 0 0 4px #fff}
+.flow-line .ax .line{position:absolute;top:0;bottom:0;width:2px;background:var(--line-strong)}
+.flow-line:first-child .ax .line{top:50%}
+.flow-line:last-child .ax .line{bottom:50%}
+.flow-line .c{padding:26px 0 0 4px}
+.flow-line .c h4{font-size:17px;color:var(--ink)}
+.flow-line .c .phase{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:3px}
+.flow-line .c p{font-size:14px;color:var(--muted);line-height:1.7;max-width:62ch}
+.flow-line .c ul{font-size:13.5px;color:var(--ink-2);margin-top:8px;padding-left:18px}
+.flow-line .c li{margin-bottom:4px}
+.flow-line.hl .dot{border-color:var(--gold);background:var(--gold)}
+.flow-line.hl .c h4{color:var(--navy)}
+.branch{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--warn);background:#f7e8e0;border-radius:6px;padding:2px 8px;margin-top:8px}
+
+/* ============ FAQ ============ */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.faq-group{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--card-shadow)}
+.faq-group>h3{display:flex;align-items:center;gap:10px;padding:18px 20px;font-size:16px;color:var(--ink);background:var(--navy-soft);font-family:var(--serif);font-weight:700}
+.faq-group>h3 svg{width:19px;height:19px;stroke:var(--navy-2);flex:none}
+.faq-item{border-top:1px solid var(--line)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;background:none;border:none;padding:15px 20px;font-size:14.5px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.faq-q .pl{width:22px;height:22px;flex:none;border-radius:50%;border:1.6px solid var(--navy-2);color:var(--navy-2);display:flex;align-items:center;justify-content:center;font-size:14px;transition:transform .25s,background .25s,color .25s}
+.faq-item.open .faq-q .pl{transform:rotate(45deg);background:var(--navy-2);color:#fff}
+.faq-a{display:none;padding:2px 20px 18px;font-size:14px;color:var(--ink-2);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+.faq-a .tip{display:flex;gap:8px;background:var(--gold-soft);border:1px solid #ead9b0;border-radius:9px;padding:10px 12px;font-size:13px;color:#6d5620;margin-top:10px}
+.faq-a .tip svg{width:15px;height:15px;flex:none;stroke:var(--gold);margin-top:2px}
+
+/* ============ tools ============ */
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tool{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--card-shadow);overflow:hidden;display:flex;flex-direction:column}
+.tool-hd{padding:22px 24px 14px;display:flex;align-items:flex-start;gap:13px;border-bottom:1px dashed var(--line)}
+.tool-hd .ico{width:44px;height:44px;border-radius:12px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex:none}
+.tool-hd .ico svg{width:22px;height:22px;stroke:var(--navy-2)}
+.tool-hd h3{font-family:var(--serif);font-size:19px;color:var(--ink)}
+.tool-hd p{font-size:13px;color:var(--muted);margin-top:2px}
+.tool-bd{padding:20px 24px;flex:1}
+.tool-note{padding:12px 24px;background:var(--navy-soft);font-size:12.5px;color:var(--navy-2);display:flex;gap:8px;align-items:flex-start}
+.tool-note svg{width:15px;height:15px;flex:none;margin-top:2px}
+
+/* quiz */
+.quiz-step{display:none}
+.quiz-step.active{display:block}
+.quiz-q{font-size:15.5px;font-weight:600;color:var(--ink);margin-bottom:14px;line-height:1.6}
+.quiz-opts{display:grid;gap:9px}
+.quiz-opt{display:flex;align-items:flex-start;gap:11px;border:1.5px solid var(--line-strong);border-radius:11px;padding:12px 14px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s}
+.quiz-opt input{width:18px;height:18px;margin-top:3px;flex:none;accent-color:var(--navy-2)}
+.quiz-opt .txt{font-size:14px;color:var(--ink-2)}
+.quiz-opt.sel{border-color:var(--navy-2);background:var(--navy-soft)}
+.quiz-nav{display:flex;justify-content:space-between;margin-top:18px}
+.mini-btn{border:1px solid var(--line-strong);background:#fff;color:var(--ink-2);padding:9px 15px;border-radius:9px;font-weight:600;font-size:14px;cursor:pointer}
+.mini-btn.primary{background:var(--navy-2);border-color:var(--navy-2);color:#fff}
+.mini-btn:disabled{opacity:.45;cursor:not-allowed}
+.quiz-result{display:none;background:linear-gradient(180deg,#fff,#f1f6fb);border:1px solid #cfe0ee;border-radius:12px;padding:18px 20px;margin-top:14px}
+.quiz-result.show{display:block}
+.quiz-result h4{color:var(--navy);font-size:16px;margin-bottom:6px}
+.quiz-result p{font-size:13.5px;color:var(--ink-2);margin-bottom:4px}
+.quiz-result .reco{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line-strong);font-size:13px;color:var(--muted)}
+.quiz-progress{height:5px;background:var(--line);border-radius:3px;margin:16px 24px 0;overflow:hidden}
+.quiz-progress i{display:block;height:100%;background:var(--navy-2);width:20%;transition:width .3s}
+
+/* calculator */
+.fee-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.field select,.field input{width:100%;padding:10px 12px;border:1.4px solid var(--line-strong);border-radius:9px;font-size:14.5px;background:#fff;color:var(--ink)}
+.field select:focus,.field input:focus{outline:none;border-color:var(--navy-2)}
+.seg{display:flex;border:1.4px solid var(--line-strong);border-radius:9px;overflow:hidden}
+.seg button{flex:1;padding:9px 0;border:none;background:#fff;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer}
+.seg button.on{background:var(--navy-2);color:#fff}
+.fee-out{margin-top:18px}
+.fee-sum{display:flex;justify-content:space-between;align-items:baseline;background:linear-gradient(180deg,#fff,#f1f6fb);border:1px solid #cfe0ee;border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.fee-sum .lab{font-size:13px;color:var(--muted)}
+.fee-sum .val{font-family:var(--serif);font-size:30px;color:var(--navy);font-weight:700}
+.fee-sum .val small{font-size:15px;font-weight:600}
+.fee-lines{display:grid;gap:6px}
+.fee-row{display:flex;justify-content:space-between;font-size:13.5px;padding:7px 12px;background:#fff;border:1px solid var(--line);border-radius:8px}
+.fee-row .k{color:var(--ink-2)}
+.fee-row .v{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.fee-row .v.disc{color:var(--ok)}
+.fee-hint{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.65}
+.fee-hint b{color:var(--ink-2)}
+
+/* checklist */
+.chk-items{display:grid;gap:9px}
+.chk-item{display:flex;align-items:flex-start;gap:11px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff;cursor:pointer}
+.chk-item input{width:18px;height:18px;flex:none;margin-top:3px;accent-color:var(--ok)}
+.chk-item .tt{font-size:14.5px;font-weight:600;color:var(--ink)}
+.chk-item .de{font-size:12.5px;color:var(--muted);margin-top:1px}
+.chk-item.done{background:#f2f8f4;border-color:#c4dfce}
+.chk-item.done .tt{color:var(--ok);text-decoration:line-through}
+.chk-progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:14px}
+.chk-progress i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.chk-count{font-size:13px;color:var(--muted);margin-top:8px}
+
+/* ============ official ============ */
+.official-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:22px}
+.off-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--card-shadow)}
+.off-card .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--ok);background:#eaf4ee;border-radius:6px;padding:3px 9px;margin-bottom:12px}
+.off-card .tag svg{width:13px;height:13px}
+.off-card h4{font-size:16px;color:var(--ink);margin-bottom:6px}
+.off-card p{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:12px}
+.off-card a{font-size:13.5px;font-weight:600}
+.off-card .note{font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
+.legal-box{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:22px 24px;margin-top:6px}
+.legal-box h3{font-size:16px;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.legal-box h3 svg{width:18px;height:18px;stroke:var(--gold)}
+.legal-box ul{font-size:14px;color:var(--ink-2);line-height:1.9;padding-left:20px}
+.legal-box .warn-list{font-size:14px;color:var(--warn);line-height:1.9;padding-left:20px;margin-top:6px}
+.legal-box .disp{margin-top:14px;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+
+/* ============ footer ============ */
+footer{background:#0b1a2e;color:#a9bfd4;padding:44px 0 40px;font-size:13.5px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
+footer h5{color:#fff;font-family:var(--serif);font-size:16px;margin-bottom:12px}
+footer a{color:#cfe0ef}
+footer p{line-height:1.8}
+.footer-meta{margin-top:24px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font-size:12.5px;color:#7e93a9;line-height:1.8}
+
+/* ============ responsive ============ */
+@media(max-width:920px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .type-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .official-grid{grid-template-columns:1fr 1fr}
+  .faq-grid,.tools-grid{grid-template-columns:1fr}
+  .def-card{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  body{font-size:15px}
+  section{padding:52px 0}
+  .container{padding:0 16px}
+  .hero{padding:46px 0 56px}
+  .hero-stats .stat{padding:0 16px}
+  .hero-stats .num{font-size:24px}
+  .type-grid,.why-grid{grid-template-columns:1fr}
+  .official-grid{grid-template-columns:1fr}
+  .fee-form{grid-template-columns:1fr}
+  .stage{min-height:280px}
+  .flow-line{grid-template-columns:60px 34px 1fr}
+  .flow-line .c p{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .flow-fill,.cert{animation:none}
+  .cert{opacity:1;transform:none}
+  .flow-fill{height:calc(100% - 14px)}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#12335b"/><path d="M9 22V10l14 14V10" stroke="#c89b3c" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>专利指南 <b>从想法到权利</b></span>
+    </div>
+    <nav class="topnav" id="topnav">
+      <a href="#what">专利是什么</a>
+      <a href="#types">三种类型</a>
+      <a href="#flow">申请流程</a>
+      <a href="#faq">常见问题</a>
+      <a href="#tools">实用工具</a>
+      <a href="#official">官方渠道</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-eyebrow"><span class="dot"></span>中国专利 · 一份给发明人的自助指南</div>
+        <h1>一项发明，如何变成<span class="gold">受法律保护的专利</span></h1>
+        <p class="hero-sub">不懂专利、怕被坑、担心流程复杂？这份指南把专利讲清楚，把申请流程里的每个环节、每个常见问题都给你对应的、合规的解决办法——一切以《专利法》和国家知识产权局官方规定为准。</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#flow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            查看申请流程
+          </a>
+          <a class="btn btn-ghost" href="#tools">用工具估算费用</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="num">3<small>种</small></div><div class="lab">专利类型</div></div>
+          <div class="stat"><div class="num">20<small>年</small></div><div class="lab">发明最长保护期</div></div>
+          <div class="stat"><div class="num">85<small>%</small></div><div class="lab">符合条件的费减比例</div></div>
+        </div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="stage-inner">
+          <div class="flow-track">
+            <div class="flow-rail"></div>
+            <div class="flow-fill"></div>
+            <div class="flow-node"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M8 4l4 4 4-4"/><path d="M12 8v8"/><path d="M9 12h6"/></svg><span class="tl tl-l">想法</span></div>
+            <div class="flow-node" style="top:25%"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="tl tl-l">检索</span></div>
+            <div class="flow-node" style="top:50%"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg><span class="tl">受理</span></div>
+            <div class="flow-node" style="top:75%"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l4 4L21 4"/></svg><span class="tl">授权</span></div>
+          </div>
+        </div>
+        <div class="cert-wrap">
+          <div class="cert">
+            <div class="crown">专利权证书</div>
+            <div class="c-title">发明专利证书</div>
+            <div class="c-line"></div>
+            <div class="c-meta">专利号 ZL 2026 1 0000000.0<br>一种……技术方案<br>专利权人 · 发明人</div>
+            <div class="c-stamp">国家知识产权局<br>授权专用章</div>
+          </div>
+        </div>
+        <div class="stage-caption">从想法到证书 · 示意动画</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHAT ===================== -->
+<section id="what">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="n">01</span> 专利是什么</div>
+      <h2>一句话：用「公开技术」换「一段时间的排他保护」</h2>
+      <p class="lead">专利是专利法赋予专利权人对其发明创造，在一定期限内享有的独占实施权。核心逻辑是你把技术方案充分公开，国家依法在一定年限内授予你排他保护，他人未经许可不得实施。</p>
+    </div>
+    <div class="def-card">
+      <div class="def-main">
+        <p class="big">专利，指依法受保护的<span>发明创造</span>所享有的排他性权利。依据现行《中华人民共和国专利法》（2020年修正、2021年6月1日施行），我国专利分为<em>发明、实用新型、外观设计</em>三种。</p>
+        <p class="big" style="margin-top:12px">申请一项专利，通常需要具备法律要求的<span>新颖性、创造性、实用性</span>（发明与实用新型）；保护期限自申请日起计算。</p>
+        <div class="src">依据：《专利法》第2条（定义）、第22条（三性）、第42条（期限）</div>
+      </div>
+      <div class="def-side">
+        <div class="def-chip">
+          <div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 5.3 5.9.9-4.3 4.2 1 5.9-5.2-2.7-5.2 2.7 1-5.9L3.5 8.2l5.9-.9z"/></svg>保护期（自申请日起）</div>
+          <div class="v">发明 <b>20年</b> · 实用新型 <b>10年</b> · 外观设计 <b>15年</b></div>
+        </div>
+        <div class="def-chip">
+          <div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l16 0M6 16h12M8 12h8M10 8h4M12 4h0"/></svg>审查方式</div>
+          <div class="v">发明需经过<strong>实质审查</strong>（周期较长）；实用新型、外观设计一般经初步审查。</div>
+        </div>
+        <div class="def-chip">
+          <div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M6 5l2 2M18 5l-2 2M4 12h3M20 12h-3M6 19l2-2M18 19l-2-2"/></svg>申请在先原则</div>
+          <div class="v">同样的发明创造，专利权授予<b>最先申请</b>的人——早申请、早确权很关键。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TYPES ===================== -->
+<section id="types" class="alt">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="n">02</span> 三种专利类型</div>
+      <h2>先搞清楚：你的成果适合申请哪一种？</h2>
+      <p class="lead">三种类型保护的对象、审查方式、保护期和申请费用都不同，选对类型是省钱省时的第一步。</p>
+    </div>
+    <div class="type-grid">
+      <div class="type-card" style="--type-c:#12335b;--type-soft:#e8eff6">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h3>发明专利</h3>
+        <span class="tag">保护期 20 年</span>
+        <p class="desc">对产品、方法或者其改进所提出的<strong>新的技术方案</strong>。技术含量和创造性要求最高，须经实质审查，授权后保护强度高。</p>
+        <div class="row"><span class="k">审查方式</span><span class="v">实质审查</span></div>
+        <div class="row"><span class="k">申请费</span><span class="v">900 元</span></div>
+        <div class="row"><span class="k">周期参考</span><span class="v">约 15 个月起（可优先审查）</span></div>
+        <div class="apply"><b>适合：</b>有较高创造高度的产品、方法、算法/软件与硬件结合的技术方案。</div>
+      </div>
+      <div class="type-card" style="--type-c:#2e7d4f;--type-soft:#eaf4ee">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 17l3-3 3 2 5-6 2 2M6 3h12M6 7h12"/></svg></div>
+        <h3>实用新型专利</h3>
+        <span class="tag">保护期 10 年</span>
+        <p class="desc">对产品的<strong>形状、构造</strong>或者其结合所提出的适于实用的新的技术方案。只保护产品结构，不保护方法。</p>
+        <div class="row"><span class="k">审查方式</span><span class="v">初步审查</span></div>
+        <div class="row"><span class="k">申请费</span><span class="v">500 元</span></div>
+        <div class="row"><span class="k">周期参考</span><span class="v">一般半年至一年左右</span></div>
+        <div class="apply"><b>适合：</b>结构、装置类的改进型创新，费用低、授权快，是学生和个人的热门选择。</div>
+      </div>
+      <div class="type-card" style="--type-c:#b8862e;--type-soft:#f6ecd6">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="4"/><path d="M8 3v3M16 3v3M8 18v3M16 18v3M3 8h3M3 16h3M18 8h3M18 16h3"/></svg></div>
+        <h3>外观设计专利</h3>
+        <span class="tag">保护期 15 年</span>
+        <p class="desc">对产品的整体或局部的<strong>形状、图案</strong>及其结合，以及色彩与形状、图案的结合所作出的富有美感并适于工业应用的新设计。</p>
+        <div class="row"><span class="k">审查方式</span><span class="v">初步审查</span></div>
+        <div class="row"><span class="k">申请费</span><span class="v">500 元</span></div>
+        <div class="row"><span class="k">周期参考</span><span class="v">一般半年至一年左右</span></div>
+        <div class="apply"><b>适合：</b>产品外观、造型、包装等以视觉效果为主的设计。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY ===================== -->
+<section id="why">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="n">03</span> 为什么要申请</div>
+      <h2>专利不只是「一张证书」</h2>
+      <p class="lead">对个人发明人和学生来说，专利兼具保护、竞争与成长价值。</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>获得排他权利</h4>
+        <p>授权后，未经你许可，他人不得为生产经营目的制造、使用、许诺销售、销售、进口你的专利产品。</p>
+      </div>
+      <div class="why-item">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4>抢占先申请先机</h4>
+        <p>我国实行申请在先原则，越早申请越早确立权利归属，也能防止创新成果被他人抢先占位。</p>
+      </div>
+      <div class="why-item">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20V8"/><path d="M3 20h20"/></svg></div>
+        <h4>形成无形资产</h4>
+        <p>专利可作为资产进行许可、转让、质押融资，也是企业申报高新、招投标、评职称的重要指标。</p>
+      </div>
+      <div class="why-item">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg></div>
+        <h4>助力成长与评价</h4>
+        <p>对学生可用于保研加分、综测、学科竞赛、项目结题；对企业可用于项目申报与无形资产估值。</p>
+      </div>
+    </div>
+    <p class="why-note">提示：专利的意义在于「确权 + 排他」。真正能被授权并发挥保护作用的，是基于真实创新、依法规范撰写的申请——而不是为凑数、为加分的低质量申请。</p>
+  </div>
+</section>
+
+<!-- ===================== FLOW ===================== -->
+<section id="flow" class="alt">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="n">04</span> 申请全流程</div>
+      <h2>从想法到专利证书，走对这七步</h2>
+      <p class="lead">以发明专利为主线的完整路径（实用新型、外观设计跳过第 5 步的实质审查）。每一步下方都列出你会遇到的常见问题，可在「常见问题」板块查看解决办法。</p>
+    </div>
+    <div class="flow-wrap">
+      <div class="flow-line">
+        <div class="t">Step 1<br>检索</div>
+        <div class="ax"><span class="dot"></span><span class="line"></span></div>
+        <div class="c">
+          <div class="phase">查新 · 判断可行性</div>
+          <h4>专利检索与查新</h4>
+          <p>先用关键词、分类号在官方检索平台检索，判断你的方案是否已有相同或相近的技术公开。这一步能帮你避开「已被公开 / 在先申请」的驳回风险，也是撰写权利要求的重要参考。</p>
+          <ul>
+            <li>免费渠道：国家知识产权局专利检索及分析系统（pss-system.cponline.cnipa.gov.cn）</li>
+            <li>关注点：相同技术已被公开、已被他人申请在先，都可能影响新颖性</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flow-line">
+        <div class="t">Step 2<br>撰写</div>
+        <div class="ax"><span class="dot"></span><span class="line"></span></div>
+        <div class="c">
+          <div class="phase">文件 · 决定授权成败</div>
+          <h4>撰写申请文件</h4>
+          <p>发明/实用新型通常包括：请求书、说明书及其摘要、权利要求书，实用新型还必须有说明书附图；外观设计则提交图片或照片及简要说明。权利要求书界定了保护范围，是最核心的法律文件。</p>
+          <ul>
+            <li>权利要求书：清楚、简要地限定保护范围，忌过宽（易驳回）或过窄（保护不足）</li>
+            <li>说明书：必须对技术方案作出清楚、完整的说明，使所属领域技术人员能够实现</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flow-line">
+        <div class="t">Step 3<br>提交</div>
+        <div class="ax"><span class="dot"></span><span class="line"></span></div>
+        <div class="c">
+          <div class="phase">受理 · 锁定申请日</div>
+          <h4>提交申请，获得申请日与申请号</h4>
+          <p>推荐通过国家知识产权局「专利业务办理系统」（cponline.cnipa.gov.cn）在线提交电子申请，也可使用 CPC 客户端或提交纸质申请。受理后即取得申请日（具有法律意义的先后次序依据）与申请号。</p>
+          <ul>
+            <li>个人可自行提交，也可委托经备案的专利代理机构办理</li>
+            <li>同时缴纳申请费等费用（符合条件可申请费用减缴）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flow-line">
+        <div class="t">Step 4<br>初审</div>
+        <div class="ax"><span class="dot"></span><span class="line"></span></div>
+        <div class="c">
+          <div class="phase">初步审查</div>
+          <h4>受理后的初步审查</h4>
+          <p>审查申请文件是否齐全、格式是否规范、明显缺陷等。发明、实用新型、外观设计均需经过初审。实用新型和外观设计经初审符合要求后，即可进入授权或视情况驳回。</p>
+          <div class="branch">实用新型 / 外观设计：初审通过 → 授权公告（无实质审查）</div>
+        </div>
+      </div>
+      <div class="flow-line">
+        <div class="t">Step 5<br>实审<br><small style="color:#7b8794">仅发明</small></div>
+        <div class="ax"><span class="dot"></span><span class="line"></span></div>
+        <div class="c">
+          <div class="phase">公布 + 实质审查 · 仅发明专利</div>
+          <h4>公开与实质审查</h4>
+          <p>发明专利申请自申请日（或优先权日）起满 18 个月即公开；申请人需自申请日起 <strong>3 年内</strong>提出实质审查请求并缴纳实质审查费。实审重点核查新颖性、创造性、实用性。</p>
+          <ul>
+            <li>未在规定期限内请求实审的，申请将被视为撤回</li>
+            <li>可依规定请求优先审查，缩短等待时间</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flow-line">
+        <div class="t">Step 6<br>授权</div>
+        <div class="ax"><span class="dot"></span><span class="line"></span></div>
+        <div class="c">
+          <div class="phase">登记 · 颁证</div>
+          <h4>授权公告与登记</h4>
+          <p>经审查符合授权条件的，国家知识产权局作出授权决定，申请人办理登记手续、缴纳授权当年的年费和印花税后，颁发专利证书并公告。</p>
+        </div>
+      </div>
+      <div class="flow-line hl">
+        <div class="t">Step 7<br>维持</div>
+        <div class="ax"><span class="dot"></span><span class="line"></span></div>
+        <div class="c">
+          <div class="phase">长期 · 别让权利失效</div>
+          <h4>按时缴纳年费，维持专利权</h4>
+          <p>专利权需逐年缴纳年费维持。逾期可在宽限期内补缴并缴滞纳金；长期不缴费，专利权将终止。请务必记住缴费节点，这是最容易被忽视的「失效原因」。</p>
+          <ul>
+            <li>可在专利业务办理系统中开通缴费提醒，管理多个专利的年费</li>
+            <li>注意著录项目变更（如姓名、地址变更）及时办理</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="n">05</span> 常见问题</div>
+      <h2>申请中会遇到的问题，这里都有合规答案</h2>
+      <p class="lead">按「资格 → 费用 → 撰写 → 流程 → 审查 → 维护与合规」分组整理，答案基于《专利法》及国家知识产权局公开规定，点击展开查看。</p>
+    </div>
+    <div class="faq-grid">
+
+      <div class="faq-group">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/></svg>申请资格与主体</h3>
+        <div class="faq-item">
+          <button class="faq-q">学生或普通个人可以申请专利吗？<span class="pl">+</span></button>
+          <div class="faq-a">可以。自然人和单位均可作为申请人。需要留意<strong>职务发明</strong>：执行本单位任务或主要利用本单位物质技术条件完成的发明创造，专利权一般归单位。学生参与学校课题产生的成果，建议先与学校/课题组确认成果归属约定，再决定由谁申请。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">发明人和申请人是一回事吗？<span class="pl">+</span></button>
+          <div class="faq-a"><strong>发明人</strong>是对发明创造的实质性特点作出创造性贡献的人，只能是自然人；<strong>申请人</strong>可以是发明人、单位，也可以是受让人。例如「学生发明、学校申请」的职务发明就属于二者分离的常见情形。</div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg>费用与减缴</h3>
+        <div class="faq-item">
+          <button class="faq-q">申请专利一共要花多少钱？能减免吗？<span class="pl">+</span></button>
+          <div class="faq-a">授权前首次官费大致为：<strong>发明</strong>3450 元（申请费 900 + 公布印刷费 50 + 实质审查费 2500）；<strong>实用新型/外观设计</strong>500 元。符合条件的个人（上年度月均收入低于 5000 元）或企业（上年度应纳税所得额低于 100 万元）可减缴 <strong>85%</strong>；两人及以上共同申请的减缴 <strong>70%</strong>。<div class="tip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M12 16v-4M12 8h.01"/></svg>减缴后发明首次约 560 元、实用新型约 75 元。可用下方「费用估算器」试算。</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">什么时候要交钱？不交会怎样？<span class="pl">+</span></button>
+          <div class="faq-a">申请费在提交/受理后缴纳；发明专利的实质审查费在提出实审请求时缴纳；授权时缴纳授权当年年费和印花税。逾期不缴，申请可能被视为撤回或不予受理。推荐通过国家知识产权局「专利业务办理系统」在线缴费。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">授权后每年都要交年费吗？<span class="pl">+</span></button>
+          <div class="faq-a">需要逐年缴纳。发明年费：1–3 年每年 900 元、4–6 年 1200、7–9 年 2000、10–12 年 4000、13–15 年 6000、16–20 年 8000；实用新型/外观设计：1–3 年 600、4–5 年 900、6–8 年 1200、9–10 年 2000。逾期可在 6 个月宽限期内补缴并加缴滞纳金。</div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg>撰写与材料</h3>
+        <div class="faq-item">
+          <button class="faq-q">申请文件要准备哪些？<span class="pl">+</span></button>
+          <div class="faq-a">发明/实用新型：<strong>请求书、说明书及其摘要、权利要求书</strong>，实用新型还必须提交<strong>说明书附图</strong>；外观设计：图片或照片及简要说明。权利要求书界定保护范围，说明书需清楚完整地说明技术方案，使本领域技术人员能够实现。可用下方「材料清单」逐项核对。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">文件可以自己写吗？还是必须找代理？<span class="pl">+</span></button>
+          <div class="faq-a">可以自行撰写并提交，也可委托经国家知识产权局备案的专利代理机构（由执业专利代理师办理）。专业撰写通常能提高授权率、争取更合理的保护范围，但属于有偿服务。是否委托，取决于你对申请质量的预期与预算。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">权利要求书写宽了还是窄了好？<span class="pl">+</span></button>
+          <div class="faq-a">不宜过宽也不宜过窄：过宽易因落入已有技术、缺少创造性而驳回；过窄则保护范围小、防不住模仿。应在检索基础上，用「一项独立权利要求 + 若干从属权利要求」的布局兼顾稳定性与保护范围。具体撰写建议咨询专业代理师。</div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>流程与进度</h3>
+        <div class="faq-item">
+          <button class="faq-q">申请到授权要多久？<span class="pl">+</span></button>
+          <div class="faq-a">据国家知识产权局公开信息，当前<strong>发明专利平均审查周期已压减至约 15 个月</strong>，还可依法请求优先审查；实用新型、外观设计一般经初步审查，通常约半年至一年左右。实际周期受申请量、材料质量、答复速度等因素影响。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">申请日为什么很重要？<span class="pl">+</span></button>
+          <div class="faq-a">申请日决定<strong>申请在先次序</strong>、<strong>保护期起算点</strong>，以及多个法定期限的起点（如发明须在 3 年内请求实审、优先权期限等）。电子申请提交成功的当日即为申请日，务必留存受理通知与申请号。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">提交后还能补正或修改吗？<span class="pl">+</span></button>
+          <div class="faq-a">可以，但须依法进行。初审阶段可对明显缺陷补正；发明实审中对权利要求的修改<strong>不得超出原说明书和权利要求书记载的范围</strong>。按要求补正/答复，是流程中的正常环节。</div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M5 3h14v6l-7 6v4H5V3z"/></svg>审查与答复</h3>
+        <div class="faq-item">
+          <button class="faq-q">收到审查意见通知书怎么办？<span class="pl">+</span></button>
+          <div class="faq-a">在通知书载明的期限内答复。发明实审中的审查意见通知书常涉及新颖性、创造性，需在期限内陈述意见或依法修改文件；逾期未答复，申请可能被视为撤回。答复质量直接关系能否授权，必要时可咨询代理师。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">被驳回了还有补救机会吗？<span class="pl">+</span></button>
+          <div class="faq-a">有。对驳回决定不服，可在收到之日起 <strong>3 个月内</strong>向国家知识产权局请求<strong>复审</strong>；对复审决定仍不服的，可依法向人民法院提起行政诉讼。也可在答复阶段通过合理修改争取授权。</div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>维护与合规</h3>
+        <div class="faq-item">
+          <button class="faq-q">忘缴年费，专利会失效吗？<span class="pl">+</span></button>
+          <div class="faq-a">会。超过缴费期限未缴，有 6 个月宽限期，期间补缴需同时缴滞纳金；宽限期届满仍未缴，专利权终止。建议在专利业务办理系统及时缴纳并留意提醒，管理多件专利时尤其注意。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">什么是「非正常申请」？为什么不能碰？<span class="pl">+</span></button>
+          <div class="faq-a">非正常申请指不以保护创新为目的的异常申请行为，如批量拼凑、低质量重复申请、恶意囤积占位等。此类申请会被国家知识产权局依法处理（要求主动撤回、纳入监控，情节严重依法处置）。请始终<strong>基于真实创新</strong>规范申请。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">网上「包过」「快速下证」靠谱吗？<span class="pl">+</span></button>
+          <div class="faq-a">专利授权有法定审查标准，不存在「包授权」。请选择经国家知识产权局<strong>备案的专利代理机构</strong>，警惕夸大宣传与高价「保授权」服务；一切以官方规定和受理进程为准。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TOOLS ===================== -->
+<section id="tools" class="alt">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="n">06</span> 实用工具</div>
+      <h2>用这几个小工具，把申请决策变简单</h2>
+      <p class="lead">工具基于公开收费标准与法规规则编写，仅作自助参考，具体以国家知识产权局实际办理为准。</p>
+    </div>
+    <div class="tools-grid">
+
+      <!-- quiz -->
+      <div class="tool">
+        <div class="tool-hd">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4 18a3 3 0 0 0 5 3l6-9V3"/></svg></div>
+          <div><h3>专利类型自测</h3><p>回答 3 个问题，判断你的成果更适合申请哪种专利</p></div>
+        </div>
+        <div class="tool-bd">
+          <div class="quiz" id="quiz">
+            <div class="quiz-progress"><i id="quizProg"></i></div>
+            <div style="margin-top:16px">
+              <div class="quiz-step active" data-step="0">
+                <div class="quiz-q">1 / 3 · 你的成果主要是「技术方案」还是「视觉外观」？</div>
+                <div class="quiz-opts">
+                  <label class="quiz-opt"><input type="radio" name="q0" value="tech"><span class="txt">技术方案——产品、方法或工艺改进，解决的是功能/结构问题</span></label>
+                  <label class="quiz-opt"><input type="radio" name="q0" value="design"><span class="txt">视觉外观——产品的形状、图案、色彩等美感设计</span></label>
+                </div>
+              </div>
+              <div class="quiz-step" data-step="1">
+                <div class="quiz-q">2 / 3 · 它保护的是「产品结构」还是「方法」？</div>
+                <div class="quiz-opts">
+                  <label class="quiz-opt"><input type="radio" name="q1" value="structure"><span class="txt">产品结构——有形的装置、构件、形状构造改进</span></label>
+                  <label class="quiz-opt"><input type="radio" name="q1" value="method"><span class="txt">方法/工艺/算法——制作方法、控制方法、处理步骤等</span></label>
+                </div>
+              </div>
+              <div class="quiz-step" data-step="2">
+                <div class="quiz-q">3 / 3 · 你对创造性与保护强度的预期是？</div>
+                <div class="quiz-opts">
+                  <label class="quiz-opt"><input type="radio" name="q2" value="high"><span class="txt">创造性较高、希望保护方法本身或更高强度 → 倾向发明</span></label>
+                  <label class="quiz-opt"><input type="radio" name="q2" value="low"><span class="txt">结构改进、预算有限、希望尽快授权 → 倾向实用新型</span></label>
+                </div>
+              </div>
+            </div>
+            <div class="quiz-nav">
+              <button class="mini-btn" id="quizPrev" disabled>上一步</button>
+              <button class="mini-btn primary" id="quizNext">下一步</button>
+            </div>
+            <div class="quiz-result" id="quizResult">
+              <h4 id="quizResTitle">建议申请：</h4>
+              <p id="quizResBody"></p>
+              <div class="reco" id="quizResReco"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tool-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M12 16v-4M12 8h.01"/></svg>本工具仅作初步判断参考，最终类型选择请结合技术内容咨询专业人士。</div>
+      </div>
+
+      <!-- fee calculator -->
+      <div class="tool">
+        <div class="tool-hd">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg></div>
+          <h3 style="align-self:center">官方费用估算器</h3>
+        </div>
+        <div class="tool-bd">
+          <div class="fee-form">
+            <div class="field">
+              <label>专利类型</label>
+              <select id="feeType">
+                <option value="inv">发明</option>
+                <option value="um" selected>实用新型</option>
+                <option value="design">外观设计</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>费用减缴</label>
+              <div class="seg" id="feeRelief">
+                <button data-v="none" class="">不减免</button>
+                <button data-v="85" class="on">减85%</button>
+                <button data-v="70">减70%</button>
+              </div>
+            </div>
+          </div>
+          <div class="fee-out">
+            <div class="fee-sum"><span class="lab">授权前首次官费合计</span><span class="val"><small>¥</small><span id="feeTotal">75</span></span></div>
+            <div class="fee-lines" id="feeLines"></div>
+            <div class="fee-hint" id="feeHint"></div>
+          </div>
+        </div>
+        <div class="tool-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M12 16v-4M12 8h.01"/></svg>减缴条件：个人上年度月均收入低于 5000 元，或企业上年度应纳税所得额低于 100 万元（减 85%）；两人及以上共同申请减 70%。</div>
+      </div>
+
+      <!-- checklist -->
+      <div class="tool">
+        <div class="tool-hd">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div><h3>申请材料清单核对</h3><p>按类型逐项核对，勾选后实时显示进度</p></div>
+        </div>
+        <div class="tool-bd">
+          <div class="chk-items" id="chkItems"></div>
+          <div class="chk-progress"><i id="chkBar"></i></div>
+          <div class="chk-count" id="chkCount">已准备 0 / 0 项</div>
+        </div>
+        <div class="tool-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M12 16v-4M12 8h.01"/></svg>实用新型必须提交说明书附图；发明需在 3 年内请求实质审查并缴实审费。</div>
+        </div>
+      </div>
+
+      <!-- fee table -->
+      <div class="tool">
+        <div class="tool-hd">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M6 5v14M18 5v14M4 19h16"/><path d="M8 8h3M8 12h3M8 16h3"/></svg></div>
+          <div><h3>授权后年费速查</h3><p>查看不同阶段每年需缴纳的年费</p></div>
+        </div>
+        <div class="tool-bd">
+          <div class="seg" id="feeTab" style="margin-bottom:14px">
+            <button data-v="inv" class="on">发明</button>
+            <button data-v="um">实用新型 / 外观</button>
+          </div>
+          <div class="fee-lines" id="feeTabRows"></div>
+          <div class="fee-hint" style="margin-top:14px" id="feeTabNote"></div>
+        </div>
+        <div class="tool-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M12 16v-4M12 8h.01"/></svg>逾期未缴可在 6 个月宽限期内补缴并缴滞纳金；长期不缴专利权终止。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OFFICIAL ===================== -->
+<section id="official">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="n">07</span> 官方渠道与合规</div>
+      <h2>只在官方渠道办理，守住法律红线</h2>
+      <p class="lead">专利申请的一切手续请通过国家知识产权局官方渠道办理。下面的入口能帮你安全、合规地走完全程。</p>
+    </div>
+    <div class="official-grid">
+      <div class="off-card">
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>官方门户</span>
+        <h4>国家知识产权局</h4>
+        <p>法律、法规、政策、公告与收费标准的权威来源，也是维权援助入口。</p>
+        <a href="https://www.cnipa.gov.cn" target="_blank" rel="noopener">www.cnipa.gov.cn ↗</a>
+        <div class="note">查询《专利法》《专利法实施细则》《专利收费减缴办法》《专利审查指南》等。</div>
+      </div>
+      <div class="off-card">
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>网上办事</span>
+        <h4>专利业务办理系统</h4>
+        <p>在线提交电子申请、缴纳费用、提交费用减缴请求、查询案件进度。</p>
+        <a href="https://cponline.cnipa.gov.cn" target="_blank" rel="noopener">cponline.cnipa.gov.cn ↗</a>
+        <div class="note">建议优先使用电子申请；个人亦可提交纸质申请。</div>
+      </div>
+      <div class="off-card">
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>查新检索</span>
+        <h4>专利检索及分析系统</h4>
+        <p>免费检索已公开的专利文献，是申请前查新、撰写参考的重要工具。</p>
+        <a href="https://pss-system.cponline.cnipa.gov.cn" target="_blank" rel="noopener">pss-system.cponline.cnipa.gov.cn ↗</a>
+        <div class="note">用关键词 + IPC 分类号组合检索，判断新颖性风险。</div>
+      </div>
+    </div>
+
+    <div class="legal-box">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>合规提示 · 请始终守住这些红线</h3>
+      <ul>
+        <li>本页内容仅为<strong>一般科普与自助指引，不构成法律意见</strong>。申请前请以国家知识产权局官方规定为准，涉及重要决策时咨询<strong>执业专利代理师或律师</strong>。</li>
+        <li>仅通过上述<strong>官方渠道</strong>提交申请、缴费与提交费用减缴请求，保护个人信息与申请材料安全。</li>
+        <li>委托代理请选择经国家知识产权局<strong>备案的专利代理机构</strong>，警惕「包过」「快速下证」等夸大宣传。</li>
+      </ul>
+      <div class="warn-list">
+        请勿从事以下行为——伪造申请材料、虚构发明、<strong>非正常申请</strong>（不以保护创新为目的的批量/低质量/囤积申请）、恶意抢注占位、规避审查等，这类行为会被依法处置。
+      </div>
+      <div class="disp">免责声明：本页费用、周期等数据依据《专利收费减缴办法》及国家知识产权局公开信息整理（数据整理截至 2026 年），可能随政策调整，请以官方最新规定与实际办理为准。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h5>专利指南 · 从想法到权利</h5>
+        <p>一份面向个人发明人、学生与创业者的专利科普与申请自助指引。旨在把专利讲清楚，帮你在申请流程中少走弯路——始终以《中华人民共和国专利法》（2020 年修正）及国家知识产权局官方规定为准。</p>
+      </div>
+      <div>
+        <h5>速览</h5>
+        <p>
+          <a href="#what">专利是什么</a> · <a href="#types">三种类型</a> · <a href="#flow">申请流程</a><br>
+          <a href="#faq">常见问题</a> · <a href="#tools">实用工具</a> · <a href="#official">官方渠道</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-meta">
+      本页为一般科普参考，不构成法律意见。数据整理截至 2026 年，请以官方最新规定为准。<br>
+      主要依据：《专利法》《专利收费减缴办法》及国家知识产权局（cnipa.gov.cn）公开信息。
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== 移动端导航 ===== */
+var navToggle=document.getElementById('navToggle'),topnav=document.getElementById('topnav');
+navToggle.addEventListener('click',function(){topnav.classList.toggle('open');navToggle.setAttribute('aria-expanded',topnav.classList.contains('open'));});
+
+/* ===== FAQ 手风琴 ===== */
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item=q.closest('.faq-item');item.classList.toggle('open');
+  });
+});
+
+/* ===== 类型自测 ===== */
+var quiz=document.getElementById('quiz'),steps=quiz.querySelectorAll('.quiz-step'),cur=0;
+var quizProg=document.getElementById('quizProg'),quizPrev=document.getElementById('quizPrev'),quizNext=document.getElementById('quizNext');
+var quizResult=document.getElementById('quizResult');
+function radioVal(name){var r=quiz.querySelector('input[name="'+name+'"]:checked');return r?r.value:null;}
+function setSelVisual(stepEl){stepEl.querySelectorAll('.quiz-opt').forEach(function(o){o.classList.toggle('sel',o.querySelector('input').checked);});}
+function updQuiz(){
+  steps.forEach(function(s,i){s.classList.toggle('active',i===cur);});
+  quizProg.style.width=Math.round((cur+1)/3*100)+'%';
+  quizPrev.disabled=(cur===0);
+  setSelVisual(steps[cur]);
+  if(cur===0)quizNext.textContent='下一步';
+  else if(cur===1)quizNext.textContent='下一步';
+  else quizNext.textContent='查看结果';
+}
+function finishQuiz(type){
+  var t={design:['外观设计专利','保护产品的形状、图案等美感设计，保护期 15 年，一般经初步审查，费用较低。','适合以视觉效果为主的造型与包装设计。'],
+          inv:['发明专利','保护方法、工艺、算法或创造性较高的技术方案，保护期 20 年，需经实质审查（周期较长）。','适合技术含量高、希望保护方法本身或更高保护强度的创新。'],
+          um:['实用新型专利','保护产品结构改进，保护期 10 年，仅初步审查，费用低、授权快。','适合结构装置类的改进型创新，是预算有限的常见选择。']};
+  document.getElementById('quizResTitle').textContent='建议申请：'+t[type][0];
+  document.getElementById('quizResBody').textContent=t[type][1];
+  document.getElementById('quizResReco').textContent='提示：'+t[type][2]+' 以上为初步判断，请结合检索结果与专业意见确定最终类型。';
+  quizResult.classList.add('show');
+  quizPrev.style.display='none';quizNext.textContent='重新测试';quizNext.dataset.restart='1';
+}
+quizNext.addEventListener('click',function(){
+  if(this.dataset.restart){cur=0;quizResult.classList.remove('show');quizPrev.style.display='';delete this.dataset.restart;updQuiz();return;}
+  var v=radioVal('q'+cur);
+  if(!v){return;}
+  if(cur===0&&v==='design'){finishQuiz('design');}
+  else if(cur===1&&v==='method'){finishQuiz('inv');}
+  else if(cur===2){finishQuiz(v==='high'?'inv':'um');}
+  else{cur++;updQuiz();}
+});
+quizPrev.addEventListener('click',function(){if(cur>0){cur--;updQuiz();}});
+steps.forEach(function(s){s.querySelectorAll('.quiz-opt input').forEach(function(i){i.addEventListener('change',function(){setSelVisual(s);});});});
+updQuiz();
+
+/* ===== 费用估算器 ===== */
+var FEE={
+  inv:[{k:'申请费',a:900,r:1},{k:'公布印刷费',a:50,r:0},{k:'实质审查费',a:2500,r:1}],
+  um:[{k:'申请费',a:500,r:1}],
+  design:[{k:'申请费',a:500,r:1}]
+};
+var YEAR_FEE={inv:900,um:600,design:600};
+var feeType=document.getElementById('feeType'),feeRelief='85';
+function feeCompute(){
+  var lines=FEE[feeType.value],rate=feeRelief==='none'?1:(feeRelief==='85'?0.15:0.30),total=0;
+  var html='',disc;
+  lines.forEach(function(l){
+    var amt=feeRelief==='none'||!l.r?l.a:Math.round(l.a*rate);
+    total+=amt;disc=feeRelief!=='none'&&l.r;
+    html+='<div class="fee-row"><span class="k">'+l.k+'</span><span class="v'+(disc?' disc':'')+'">¥'+amt.toLocaleString()+(disc?'（减免）':'')+'</span></div>';
+  });
+  var yf=feeRelief==='none'?YEAR_FEE[feeType.value]:Math.round(YEAR_FEE[feeType.value]*(feeRelief==='85'?0.15:0.30));
+  html+='<div class="fee-row"><span class="k">授权当年年费（第 1 年）</span><span class="v">¥'+yf.toLocaleString()+'</span></div>';
+  document.getElementById('feeTotal').textContent=total.toLocaleString();
+  document.getElementById('feeLines').innerHTML=html;
+  var n=feeType.value==='inv'?'发明':'实用新型/外观设计';
+  var hi='授权后每年需缴年费维持；'+n+'第 1 年'+(feeRelief==='none'?'':'（减缴后）')+'为 ¥'+yf.toLocaleString()+'。';
+  document.getElementById('feeHint').textContent='说明：'+hi+' 上述金额为官费参考，代理服务费另计，以官方实际收取为准。';
+}
+feeType.addEventListener('change',feeCompute);
+document.querySelectorAll('#feeRelief button').forEach(function(b){
+  b.addEventListener('click',function(){
+    feeRelief=this.dataset.v;
+    document.querySelectorAll('#feeRelief button').forEach(function(x){x.classList.toggle('on',x===b);});
+    feeCompute();
+  });
+});
+feeCompute();
+
+/* ===== 材料清单 ===== */
+var CHK=[
+ {t:'请求书',d:'填写申请人、发明人、名称、地址等信息'},
+ {t:'说明书及其摘要',d:'发明 / 实用新型'},
+ {t:'权利要求书',d:'发明 / 实用新型'},
+ {t:'说明书附图',d:'实用新型必备；发明视需要'},
+ {t:'外观设计图片或照片及简要说明',d:'外观设计'},
+ {t:'费用减缴请求书',d:'符合减缴条件时一并提交'},
+ {t:'缴纳申请费',d:'受理后按要求缴纳'},
+ {t:'发明：实质审查请求书 + 实审费',d:'自申请日起 3 年内提出'}
+];
+var chkContainer=document.getElementById('chkItems');
+var chkHtml='';
+CHK.forEach(function(c,i){
+  chkHtml+='<label class="chk-item" data-i="'+i+'"><input type="checkbox"><span><span class="tt">'+c.t+'</span><span class="de">'+c.d+'</span></span></label>';
+});
+chkContainer.innerHTML=chkHtml;
+function chkUpd(){
+  var boxes=chkContainer.querySelectorAll('input'),n=0;
+  boxes.forEach(function(b,i){if(b.checked){n++;b.closest('.chk-item').classList.add('done');}else{b.closest('.chk-item').classList.remove('done');}});
+  document.getElementById('chkBar').style.width=Math.round(n/CHK.length*100)+'%';
+  document.getElementById('chkCount').textContent='已准备 '+n+' / '+CHK.length+' 项';
+}
+chkContainer.querySelectorAll('input').forEach(function(b){b.addEventListener('change',chkUpd);});
+chkUpd();
+
+/* ===== 年费速查 ===== */
+var FEE_TAB={
+ inv:[['1–3 年','900 元'],['4–6 年','1,200 元'],['7–9 年','2,000 元'],['10–12 年','4,000 元'],['13–15 年','6,000 元'],['16–20 年','8,000 元']],
+ um:[['1–3 年','600 元'],['4–5 年','900 元'],['6–8 年','1,200 元'],['9–10 年','2,000 元']]
+};
+var feeTab='inv',feeTabRows=document.getElementById('feeTabRows'),feeTabNote=document.getElementById('feeTabNote');
+function feeTabRender(){
+  var rows=FEE_TAB[feeTab],html='';
+  rows.forEach(function(r){html+='<div class="fee-row"><span class="k">第 '+r[0]+' 年</span><span class="v">'+r[1]+' / 年</span></div>';});
+  feeTabRows.innerHTML=html;
+  feeTabNote.textContent=feeTab==='inv'
+    ?'发明专利年费：保护期最长 20 年，费用随年限递增。'
+    :'实用新型 / 外观设计前 10 年年费相同；外观设计后期（11–15 年）年费更高，以官方标准为准。';
+}
+document.querySelectorAll('#feeTab button').forEach(function(b){
+  b.addEventListener('click',function(){
+    feeTab=this.dataset.v;
+    document.querySelectorAll('#feeTab button').forEach(function(x){x.classList.toggle('on',x===b);});
+    feeTabRender();
+  });
+});
+feeTabRender();
+</script>
+</body>
+</html>
