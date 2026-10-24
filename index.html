@@ -383,6 +383,16 @@ footer p{line-height:1.85}
   .ai-fab span{display:none}
 }
 
+
+/* ===== 右侧章节索引（桌面 · 一步直达，无需滚动） ===== */
+.rail-nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:3px;padding:9px;background:rgba(242,239,233,.92);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.rail-nav a{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:#8b93a3;text-decoration:none;padding:5px 9px;border-radius:7px;line-height:1;transition:color .15s,background .15s}
+.rail-nav a .n{color:#b9b29e;font-size:11px}
+.rail-nav a:hover{color:var(--ink);background:#efece2}
+.rail-nav a.active{background:var(--acid);color:#0a0d10;font-weight:700}
+.rail-nav a.active .n{color:#0a0d10}
+@media(max-width:1180px){.rail-nav{display:none}}
+
 </style>
 </head>
 <body>
@@ -1113,6 +1123,21 @@ footer p{line-height:1.85}
 </footer>
 
 
+
+<!-- ===== 右侧章节索引 ===== -->
+<nav class="rail-nav" aria-label="章节索引">
+  <a href="#what"><span class="n">01</span>专利是什么</a>
+  <a href="#types"><span class="n">02</span>三种类型</a>
+  <a href="#why"><span class="n">03</span>申请价值</a>
+  <a href="#flow"><span class="n">04</span>申请流程</a>
+  <a href="#faq"><span class="n">05</span>常见问题</a>
+  <a href="#tools"><span class="n">06</span>实用工具</a>
+  <a href="#knowledge"><span class="n">07</span>知识深化</a>
+  <a href="#service"><span class="n">08</span>服务全景</a>
+  <a href="#after"><span class="n">09</span>授权之后</a>
+  <a href="#official"><span class="n">10</span>官方渠道</a>
+</nav>
+
 <!-- ===== AI 专利顾问 ===== -->
 <button class="ai-fab" id="aiFab" aria-label="打开专利顾问">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/></svg><span>专利顾问</span>
@@ -1366,6 +1391,28 @@ feeTabRender();
   send.addEventListener('click',fire);
   input.addEventListener('keydown',function(ev){if(ev.key==='Enter'){fire();}});
   document.querySelectorAll('#aiChips button').forEach(function(b){b.addEventListener('click',function(){ask(b.dataset.q);});});
+})();
+
+
+/* ===== 右侧章节索引：点击直达 + 当前章节高亮（静态克制） ===== */
+(function(){
+  var rail=document.querySelector('.rail-nav');
+  if(!rail)return;
+  rail.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var t=document.getElementById(this.getAttribute('href').slice(1));
+      if(t)t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+  var ids=['what','types','why','flow','faq','tools','knowledge','service','after','official'];
+  function updateActive(){
+    var cur=ids[0],pos=(window.scrollY||document.documentElement.scrollTop)+140;
+    ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=pos)cur=id;});
+    rail.querySelectorAll('a').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+  }
+  window.addEventListener('scroll',updateActive,{passive:true});
+  updateActive();
 })();
 
 </script>
