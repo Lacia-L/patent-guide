@@ -346,6 +346,43 @@ footer p{line-height:1.85}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
 }
+
+/* ===== AI 专利顾问 ===== */
+.ai-fab{position:fixed;right:22px;bottom:22px;z-index:80;display:inline-flex;align-items:center;gap:9px;padding:13px 18px;background:var(--acid);color:#0a0d10;font-weight:700;font-size:14px;border:none;border-radius:999px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .18s ease}
+.ai-fab:hover{transform:translateY(-2px)}
+.ai-fab svg{width:19px;height:19px}
+.ai-panel{position:fixed;right:22px;bottom:84px;z-index:80;width:392px;max-height:min(600px,80vh);display:none;flex-direction:column;background:#12151a;border:1px solid rgba(255,255,255,.1);border-top:2px solid var(--acid);border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.ai-panel.open{display:flex}
+.ai-head{padding:16px 18px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ai-title{display:flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:16px;font-family:var(--serif)}
+.ai-title .dot{width:8px;height:8px;border-radius:50%;background:var(--acid);box-shadow:0 0 10px var(--acid)}
+.ai-sub{color:#8a93a0;font-size:12px;margin-top:4px;letter-spacing:.02em}
+.ai-close{position:absolute;top:12px;right:12px;background:transparent;border:none;color:#8a93a0;font-size:22px;cursor:pointer;width:32px;height:32px;line-height:1}
+.ai-close:hover{color:#fff}
+.ai-body{padding:14px 16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;min-height:220px}
+.ai-body::-webkit-scrollbar{width:8px}
+.ai-body::-webkit-scrollbar-thumb{background:#2a3038;border-radius:4px}
+.msg{display:flex}
+.msg.user{justify-content:flex-end}
+.msg .bubble{max-width:88%;padding:10px 13px;border-radius:12px;font-size:14px;line-height:1.65}
+.msg.ai .bubble{background:#1b2027;border:1px solid rgba(255,255,255,.06);color:#e6eaf0;border-top-left-radius:4px}
+.msg.user .bubble{background:var(--acid);color:#0a0d10;font-weight:600;border-top-right-radius:4px}
+.msg .src{display:block;margin-top:8px;padding-top:7px;border-top:1px dashed rgba(255,255,255,.14);color:#8a93a0;font-size:11.5px;line-height:1.5}
+.msg .seal{display:inline-flex;align-items:center;gap:5px;margin-top:8px;color:#ff4d4f;font-size:11px;font-weight:700;letter-spacing:.08em;border:1px solid rgba(255,77,79,.5);border-radius:3px;padding:2px 6px;transform:rotate(-1.5deg)}
+.ai-chips{display:flex;flex-wrap:wrap;gap:7px;padding:2px 0 4px}
+.ai-chips button{background:transparent;border:1px solid rgba(255,255,255,.14);color:#c9d1da;font-size:12px;padding:6px 10px;border-radius:999px;cursor:pointer;transition:all .15s}
+.ai-chips button:hover{border-color:var(--acid);color:var(--acid)}
+.ai-foot{display:flex;gap:8px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.08)}
+.ai-foot input{flex:1;background:#1b2027;border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#e6eaf0;font-size:15px;padding:11px 13px;outline:none}
+.ai-foot input:focus{border-color:var(--acid)}
+.ai-send{width:44px;height:44px;flex:none;background:var(--acid);border:none;border-radius:10px;color:#0a0d10;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.ai-send svg{width:19px;height:19px}
+@media(max-width:560px){
+  .ai-panel{right:12px;left:12px;width:auto;bottom:76px}
+  .ai-fab{right:14px;bottom:14px;padding:12px 15px}
+  .ai-fab span{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -1076,6 +1113,30 @@ footer p{line-height:1.85}
 </footer>
 
 
+<!-- ===== AI 专利顾问 ===== -->
+<button class="ai-fab" id="aiFab" aria-label="打开专利顾问">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/></svg><span>专利顾问</span>
+</button>
+<div class="ai-panel" id="aiPanel" role="dialog" aria-hidden="true" aria-label="专利顾问对话">
+  <div class="ai-head">
+    <div class="ai-title"><span class="dot"></span>专利顾问</div>
+    <div class="ai-sub">基于《专利法》与官方规定的自助问答 · 附依据来源</div>
+    <button class="ai-close" id="aiClose" aria-label="关闭">×</button>
+  </div>
+  <div class="ai-body" id="aiBody">
+    <div class="ai-chips" id="aiChips">
+      <button data-q="我是学生，预算有限，申请什么类型最划算？">学生怎么申请最划算</button>
+      <button data-q="我的成果能申请哪种专利？">成果能申请哪种</button>
+      <button data-q="申请一项专利要花多少钱？">要花多少钱</button>
+      <button data-q="从申请到授权要多久？">流程要多久</button>
+    </div>
+  </div>
+  <div class="ai-foot">
+    <input id="aiInput" placeholder="输入你的问题，如：学生想申请实用新型…" autocomplete="off">
+    <button class="ai-send" id="aiSend" aria-label="发送"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+  </div>
+</div>
+
 <script>
 /* ===== 移动端导航 ===== */
 var navToggle=document.getElementById('navToggle'),topnav=document.getElementById('topnav');
@@ -1245,44 +1306,69 @@ document.querySelectorAll('#feeTab button').forEach(function(b){
 });
 feeTabRender();
 
-/* ===== 动态体验（克制 · 有信息价值） ===== */
+
+/* ===== AI 专利顾问（离线知识库匹配，附官方依据） ===== */
 (function(){
-  var bar=document.getElementById('reading-bar'),toTop=document.getElementById('toTop');
-  function onScroll(){
-    var h=document.documentElement;
-    var sc=h.scrollTop||document.body.scrollTop;
-    var max=h.scrollHeight-h.clientHeight;
-    var pct=max>0?Math.min(100,sc/max*100):0;
-    if(bar){bar.style.width=pct+'%';bar.classList.toggle('on',sc>40);}
-    if(toTop){toTop.classList.toggle('show',sc>520);}
+  var fab=document.getElementById('aiFab'),panel=document.getElementById('aiPanel'),close=document.getElementById('aiClose'),
+      body=document.getElementById('aiBody'),input=document.getElementById('aiInput'),send=document.getElementById('aiSend');
+  function openP(){panel.classList.add('open');panel.setAttribute('aria-hidden','false');fab.style.display='none';}
+  function closeP(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');fab.style.display='';}
+  fab.addEventListener('click',openP);
+  close.addEventListener('click',closeP);
+  function addMsg(role,html,src,seal){
+    var m=document.createElement('div');m.className='msg '+role;
+    m.innerHTML='<div class="bubble">'+html+(src?'<span class="src">'+src+'</span>':'')+(seal?'<span class="seal">确权 · 依据官方</span>':'')+'</div>';
+    body.appendChild(m);body.scrollTop=body.scrollHeight;
   }
-  document.addEventListener('scroll',onScroll,{passive:true});
-  onScroll();
-
-  /* 区块标题进入视口时淡入 */
-  var secs=document.querySelectorAll('.sec-head');
-  if('IntersectionObserver' in window){
-    var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-    secs.forEach(function(s){s.classList.add('rv');ro.observe(s);});
+  var KB=[
+   {kw:['学生','个人','预算','省钱','便宜','没钱','最划算','性价比'],a:'如果你是<strong>学生或个人</strong>、预算有限，最划算的路径是：<br>① 成果属<strong>结构/装置类改进</strong> → 申请<strong>实用新型</strong>（申请费 500 元、仅初步审查、一般半年至一年授权、费用低）；<br>② 提交时<strong>一并请求费用减缴</strong>——符合条件的个人（学生通常符合）可减缴 <strong>85%</strong>，申请费可低至几十元；<br>③ 可自行通过官方系统在线提交，省下代理费（发明≈4–5 千、实用新型≈1.5–2 千、外观≈1–1.2 千）。',s:'依据：《专利收费减缴办法》减缴 85%；实用新型仅初步审查。'},
+   {kw:['结构','装置','硬件','机械','产品结构','形状构造'],a:'结构、装置、硬件类改进适合申请<strong>实用新型专利</strong>：<br>• 保护产品形状、构造或结合的技术方案；<br>• 仅<strong>初步审查</strong>，一般半年至一年授权；<br>• 申请费 500 元，可减缴。<br>注意：实用新型<strong>不保护方法</strong>。',s:'依据：《专利法》第 2 条；官费标准。'},
+   {kw:['算法','软件','程序','方法','工艺','代码','app','小程序'],a:'算法、软件、方法、工艺类成果适合申请<strong>发明专利</strong>：<br>• 保护产品/方法/改进的技术方案，保护期 20 年；<br>• 需<strong>实质审查</strong>，平均约 15 个月起，可请求优先审查；<br>• 纯商业方法、数学方法、游戏规则<strong>不可申请</strong>；软件需与硬件结合构成技术方案。<br>• 官费 900 + 50 + 2500（可减缴）。',s:'依据：《专利法》第 2、25 条；收费标准。'},
+   {kw:['外观','造型','包装','图案','颜色','设计稿','logo'],a:'以视觉效果为主（形状、图案、色彩、造型、包装）适合申请<strong>外观设计专利</strong>：<br>• 保护富有美感并适于工业应用的新设计，保护期 15 年；<br>• 仅初步审查，一般半年至一年授权；<br>• 申请费 500 元，可减缴。<br>注意：平面印刷品图案/色彩仅起标识作用的，<strong>不授予</strong>专利。',s:'依据：《专利法》第 2、25 条。'},
+   {kw:['选哪种','什么类型','适合申请','申请哪种','哪种专利','怎么选','该申请'],a:'三种类型这么选：<br>• <strong>方法/软件/高创造度</strong> → 发明专利（20 年、实质审查、强度高）；<br>• <strong>结构/装置改进</strong> → 实用新型（10 年、初步审查、快且省）；<br>• <strong>造型/外观</strong> → 外观设计（15 年、初步审查）。<br>不确定可用页内「类型自测」工具逐步确定。',s:'依据：《专利法》第 2、42 条。'},
+   {kw:['流程','步骤','怎么申请','开始','第一步','手续','准备'],a:'申请主线七步：<br>1. 检索查新 → 2. 撰写申请文件 → 3. 在线提交、取得申请日与申请号 → 4. 缴纳费用（可费减）→ 5.（发明）提出实质审查请求 → 6. 答复审查意见 → 7. 授权、缴纳年费维持。<br>实用新型/外观跳过第 5 步。每一步的问题与解决办法都在本页「常见问题」区。',s:'依据：国家知识产权局专利业务办理系统流程。'},
+   {kw:['材料','文件','需要什么','资料','清单','内容'],a:'发明/实用新型通常需要：<strong>请求书、说明书及其摘要、权利要求书</strong>（实用新型还必须有<strong>说明书附图</strong>）；外观设计提交<strong>图片或照片及简要说明</strong>。符合条件可一并提交<strong>费用减缴请求书</strong>；发明还需在期限内提出<strong>实质审查请求</strong>。可用页内「申请材料清单」逐项核对。',s:'依据：《专利法实施细则》申请文件规定。'},
+   {kw:['在哪提交','哪里申请','提交','官网','系统','线上','电子申请','办理'],a:'推荐通过国家知识产权局官方<strong>「专利业务办理系统」</strong>在线提交电子申请（cponline.cnipa.gov.cn），也可用 CPC 客户端或提交纸质申请。受理后即取得申请日与申请号。<br>个人可自行办理，也可委托经备案的专利代理机构。<strong>务必只用官方渠道</strong>。',s:'依据：国家知识产权局官方业务系统。'},
+   {kw:['多久','周期','多长时间','等待','要几年'],a:'审批周期参考：<br>• 发明专利：需实质审查，平均约 <strong>15 个月</strong>起（可请求优先审查）；<br>• 实用新型 / 外观设计：一般<strong>半年至一年</strong>左右。<br>实际取决于审查排队与答复速度。',s:'依据：国家知识产权局审查周期公开口径。'},
+   {kw:['费用','多少钱','申请费','收费','成本','价格','贵'],a:'官费参考（符合条件可减缴 85% 或共同申请 70%）：<br>• 发明：申请费 900 + 公布印刷费 50 + 实质审查费 2500；<br>• 实用新型 / 外观：申请费 500。<br>另有授权后<strong>年费</strong>逐年递增；若委托代理另加代理费（发明≈4–5 千、实用新型≈1.5–2 千、外观≈1–1.2 千）。精确金额用页内「费用估算器」。',s:'依据：《专利收费减缴办法》及官费标准。'},
+   {kw:['年费','每年','维持','续费','交费'],a:'年费逐年缴纳维持权利：<br>• 发明：1–3 年 900 / 4–6 年 1200 / 7–9 年 2000 / 10–12 年 4000 / 13–15 年 6000 / 16–20 年 8000 元；<br>• 实用新型/外观：1–3 年 600 / 4–5 年 900 / 6–8 年 1200 / 9–10 年 2000 元。<br>逾期未缴可能失效。页内「年费速查」可切换。',s:'依据：官方专利年费标准。'},
+   {kw:['减缴','费减','优惠','减免'],a:'费用减缴：<br>• 符合条件的<strong>个人</strong>（上年度月均收入低于 5000 元，学生通常符合）或<strong>企业</strong>（应纳税所得额低于 100 万元）可减缴 <strong>85%</strong>；<br>• 两人及以上共同申请，可减缴 <strong>70%</strong>。<br>需在申请时或缴费前提交费用减缴请求。',s:'依据：《专利收费减缴办法》。'},
+   {kw:['权利要求','怎么写','撰写','独权','从权'],a:'权利要求书是<strong>保护范围的法律边界</strong>：<br>• 写<strong>过宽</strong>易被在先技术驳回；写<strong>过窄</strong>则保护不足；<br>• 独立权利要求概括必要技术特征，从属权利要求进一步限定；<br>• 说明书须清楚、完整，使本领域技术人员能够<strong>实现</strong>。<br>建议先检索再撰写，重要申请可委托执业代理师。',s:'依据：《专利法》第 26 条、《专利审查指南》。'},
+   {kw:['公开','发表','展示','卖出','泄露','宣传'],a:'申请前自行公开（销售、发表、展示）通常<strong>会破坏新颖性</strong>，无法授权。<br>但属法定情形（政府/承认的展会首次展出、规定学术会议首次发表、他人未经同意泄露等），<strong>6 个月内</strong>申请不丧失新颖性（《专利法》第 24 条）。<br>原则：<strong>先申请占位，再对外公开</strong>。',s:'依据：《专利法》第 24 条（新颖性宽限期）。'},
+   {kw:['优先权','优先','完善','重新申请'],a:'同一主题后续完善的申请，可在<strong>发明/实用新型自首次申请日起 12 个月内、外观设计 6 个月内</strong>要求本国优先权，在先申请视为撤回，以首次申请日为优先权日。',s:'依据：《专利法》第 29、30 条。'},
+   {kw:['查新','检索','有没有人','被驳回','风险','可行性','能不能授权'],a:'申请前务必<strong>查新</strong>：用官方「专利检索及分析系统」（pss-system.cponline.cnipa.gov.cn）以关键词 + IPC 分类号检索，判断方案是否已被公开或他人申请在先。<br>相同技术已公开/在先申请，都可能导致<strong>新颖性不足被驳回</strong>。可用页内「可专利性速查」自检。',s:'依据：《专利法》第 22 条（新颖性）。'},
+   {kw:['包过','保证','一定','稳','下证','必过'],a:'没有机构能<strong>保证授权</strong>——授权有法定审查标准，是否具备新颖性、创造性等由审查决定。<br>警惕「<strong>包授权、快速下证</strong>」承诺与超低价代理，多为夸大宣传。选代理先查其是否在官方<strong>备案</strong>。',s:'依据：官方代理机构备案与审查制度。'},
+   {kw:['非正常','红线','违法','合规','合法','风险','犯法','会不会'],a:'请<strong>依法依规申请</strong>。以下行为会被依法处置：伪造申请材料、虚构发明、<strong>非正常申请</strong>（不以保护创新为目的的批量/低质量/囤积申请）、恶意抢注占位、规避审查。<br>真正的专利价值来自基于真实创新的规范申请，不为凑数、加分而申请。',s:'依据：《专利法》及非正常申请管理规定。'},
+   {kw:['官方','官网','网址','在哪办','哪里办'],a:'三个官方入口：<br>• 官网门户（法规/政策/收费/维权）：www.cnipa.gov.cn<br>• 专利业务办理系统（提交/缴费/费减/查询）：cponline.cnipa.gov.cn<br>• 专利检索及分析系统（查新）：pss-system.cponline.cnipa.gov.cn<br>一律通过官方渠道办理。',s:'依据：国家知识产权局官方平台。'},
+   {kw:['国外','国际','pct','美国','海外','多国'],a:'需多国保护可选：<br>• <strong>PCT 途径</strong>：先提国际申请，自优先权日起 <strong>30 个月</strong>内进入各指定国；<br>• <strong>巴黎公约优先权</strong>：首次申请后 12 个月内直接向目标国申请并要求优先权。<br>国际申请更复杂、费用更高，建议咨询专业人士。多数个人用户先布局国内即可。',s:'依据：《专利合作条约》（PCT）、《巴黎公约》。'},
+   {kw:['授权后','维权','侵权','转让','许可','质押','评价报告','运营'],a:'授权后仍需经营：<br>• 每年<strong>缴纳年费</strong>维持；<br>• 维权：协商、请求行政处理或诉讼；<br>• 运营：转让、许可（独占/排他/普通）、质押融资（需登记）；<br>• 实用新型/外观设计在维权、质押时可请求<strong>专利权评价报告</strong>评估稳定性。',s:'依据：《专利法》及专利运营相关办法。'}
+  ];
+  function best(q){
+    var bi=-1,bs=-1;
+    KB.forEach(function(e,i){
+      var sc=0;e.kw.forEach(function(k){if(q.indexOf(k)>-1)sc+=k.length>2?3:2;});
+      if(sc>bs){bs=sc;bi=i;}
+    });
+    return bs>0?KB[bi]:null;
   }
-
-  /* 流程时间轴随滚动逐个点亮 */
-  var lines=document.querySelectorAll('#flow .flow-line');
-  if('IntersectionObserver' in window&&lines.length){
-    var lo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');lo.unobserve(e.target);}});},{threshold:.35});
-    lines.forEach(function(l){lo.observe(l);});
+  function answer(q){
+    var e=best(q);
+    if(e){addMsg('ai',e.a,e.s,true);}
+    else{addMsg('ai','我还没完全确定你的情况。可以告诉我：<br>① 你是<strong>学生 / 个人 / 创业者</strong>？<br>② 成果属于<strong>结构装置 / 方法软件 / 造型外观</strong>哪一类？<br>③ 预算和<strong>担心的问题</strong>（费用、周期、会不会被驳回…）？<br>我据此帮你定位到最合适的类型与路径，也可点下方快捷问题。',null,false);}
   }
-
-  /* 导航随滚动高亮当前区块 */
-  var ids=['what','types','why','flow','faq','knowledge','service','after','tools','official'];
-  if('IntersectionObserver' in window){
-    var links={};ids.forEach(function(id){var a=document.querySelector('.topnav a[href="#'+id+'"]');if(a)links[id]=a;});
-    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){Object.keys(links).forEach(function(k){links[k].classList.remove('active');});var l=links[e.target.id];if(l)l.classList.add('active');}});},{rootMargin:'-40% 0px -55% 0px'});
-    ids.forEach(function(id){var el=document.getElementById(id);if(el)so.observe(el);});
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function ask(q){
+    q=(q||'').trim();if(!q)return;
+    addMsg('user',esc(q),null,false);
+    setTimeout(function(){answer(q);},260);
   }
-
-  if(toTop){toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+  function fire(){ask(input.value);input.value='';input.focus();}
+  send.addEventListener('click',fire);
+  input.addEventListener('keydown',function(ev){if(ev.key==='Enter'){fire();}});
+  document.querySelectorAll('#aiChips button').forEach(function(b){b.addEventListener('click',function(){ask(b.dataset.q);});});
 })();
+
 </script>
+
 </body>
 </html>
