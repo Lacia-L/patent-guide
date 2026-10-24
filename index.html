@@ -384,14 +384,21 @@ footer p{line-height:1.85}
 }
 
 
-/* ===== 右侧章节索引（桌面 · 一步直达，无需滚动） ===== */
-.rail-nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:3px;padding:9px;background:rgba(242,239,233,.92);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
-.rail-nav a{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:#8b93a3;text-decoration:none;padding:5px 9px;border-radius:7px;line-height:1;transition:color .15s,background .15s}
-.rail-nav a .n{color:#b9b29e;font-size:11px}
-.rail-nav a:hover{color:var(--ink);background:#efece2}
-.rail-nav a.active{background:var(--acid);color:#0a0d10;font-weight:700}
-.rail-nav a.active .n{color:#0a0d10}
-@media(max-width:1180px){.rail-nav{display:none}}
+
+
+
+/* ===== 多页面视图（每章一个页面，横向页签切换） ===== */
+main{display:block}
+.view{display:none}
+.view.active{display:block}
+.topnav a{display:flex;align-items:center;gap:6px;font-weight:600}
+.topnav a .pg{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9.5px;font-weight:700;color:#9aa0ad;background:#efece2;border-radius:5px;width:19px;height:19px;line-height:1}
+.topnav a.active{color:var(--ink);background:#efece2}
+.topnav a.active .pg{background:var(--acid);color:#0a0d10}
+@media(max-width:900px){
+  .topnav a .pg{display:none}
+  .topnav a.active{background:transparent;color:var(--acid)}
+}
 
 </style>
 </head>
@@ -403,16 +410,17 @@ footer p{line-height:1.85}
       <span>专利指南 <b>从想法到权利</b></span>
     </div>
     <nav class="topnav" id="topnav">
-      <a href="#what">专利是什么</a>
-      <a href="#types">三种类型</a>
-      <a href="#flow">申请流程</a>
-      <a href="#faq">常见问题</a>
-      <a href="#knowledge">知识深化</a>
-      <a href="#service">服务全景</a>
-      <a href="#after">授权之后</a>
-      <a href="#tools">实用工具</a>
-      <a href="#official">官方渠道</a>
-    </nav>
+      <a href="#view-what" class="active"><span class="pg">01</span>专利是什么</a>
+      <a href="#view-types"><span class="pg">02</span>三种类型</a>
+      <a href="#view-why"><span class="pg">03</span>为什么申请</a>
+      <a href="#view-flow"><span class="pg">04</span>申请流程</a>
+      <a href="#view-faq"><span class="pg">05</span>常见问题</a>
+      <a href="#view-tools"><span class="pg">06</span>实用工具</a>
+      <a href="#view-knowledge"><span class="pg">07</span>知识深化</a>
+      <a href="#view-service"><span class="pg">08</span>服务全景</a>
+      <a href="#view-after"><span class="pg">09</span>授权之后</a>
+      <a href="#view-official"><span class="pg">10</span>官方渠道</a>
+    </nav></nav>
     <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -420,7 +428,13 @@ footer p{line-height:1.85}
 </header>
 
 <!-- ===================== HERO ===================== -->
-<section class="hero" id="top">
+
+
+<!-- ===================== WHAT ===================== -->
+<section id="what" class="view active" data-v="what">
+<div class="ghost-sec" aria-hidden="true">01</div>
+  <div class="container">
+    <div class="hero" id="top">
   <div class="container">
     <div class="hero-top">
       <span class="no">CN · PATENT GUIDE</span>
@@ -433,11 +447,11 @@ footer p{line-height:1.85}
         <h1>一项发明，如何变成<span class="hl">受法律保护</span>的<span class="hl2">专利</span></h1>
         <p class="hero-sub">不懂专利、怕被坑、担心流程复杂？这份指南把专利讲清楚，把申请流程里的每个环节、每个常见问题都给你对应的、合规的解决办法——一切以《专利法》和国家知识产权局官方规定为准。</p>
         <div class="hero-cta">
-          <a class="btn btn-acid" href="#flow">
+          <a class="btn btn-acid" href="#view-flow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             查看申请流程
           </a>
-          <a class="btn btn-ghost" href="#tools">用工具估算费用</a>
+          <a class="btn btn-ghost" href="#view-tools">用工具估算费用</a>
         </div>
         <div class="hero-stats">
           <div class="stat"><div class="num">3<small>种</small></div><div class="lab">专利类型</div></div>
@@ -466,12 +480,7 @@ footer p{line-height:1.85}
       </div>
     </div>
   </div>
-</section>
-
-<!-- ===================== WHAT ===================== -->
-<section id="what">
-<div class="ghost-sec" aria-hidden="true">01</div>
-  <div class="container">
+</div>
     <div class="sec-head">
       <div class="sec-tag"><span class="idx">01</span> 专利是什么</div>
       <h2>一句话：用「公开技术」换「一段时间的排他保护」</h2>
@@ -496,7 +505,7 @@ footer p{line-height:1.85}
 </section>
 
 <!-- ===================== TYPES ===================== -->
-<section id="types" class="alt">
+<section id="types" class="alt view" data-v="types">
 <div class="ghost-sec" aria-hidden="true">02</div>
   <div class="container">
     <div class="sec-head">
@@ -525,7 +534,7 @@ footer p{line-height:1.85}
 </section>
 
 <!-- ===================== WHY ===================== -->
-<section id="why">
+<section id="why" class="view" data-v="why">
 <div class="ghost-sec" aria-hidden="true">03</div>
   <div class="container">
     <div class="sec-head">
@@ -560,7 +569,7 @@ footer p{line-height:1.85}
 </section>
 
 <!-- ===================== FLOW ===================== -->
-<section id="flow" class="alt">
+<section id="flow" class="alt view" data-v="flow">
 <div class="ghost-sec" aria-hidden="true">04</div>
   <div class="container">
     <div class="sec-head">
@@ -658,7 +667,7 @@ footer p{line-height:1.85}
 </section>
 
 <!-- ===================== FAQ ===================== -->
-<section id="faq">
+<section id="faq" class="view" data-v="faq">
 <div class="ghost-sec" aria-hidden="true">05</div>
   <div class="container">
     <div class="sec-head">
@@ -761,7 +770,7 @@ footer p{line-height:1.85}
 </section>
 
 <!-- ===================== TOOLS ===================== -->
-<section id="tools" class="alt">
+<section id="tools" class="alt view" data-v="tools">
 <div class="ghost-sec" aria-hidden="true">06</div>
   <div class="container">
     <div class="sec-head">
@@ -918,7 +927,7 @@ footer p{line-height:1.85}
 </section>
 
 <!-- ===================== KNOWLEDGE ===================== -->
-<section id="knowledge">
+<section id="knowledge" class="view" data-v="knowledge">
 <div class="ghost-sec" aria-hidden="true">07</div>
   <div class="container">
     <div class="sec-head">
@@ -966,7 +975,7 @@ footer p{line-height:1.85}
 </section>
 
 <!-- ===================== ECOSYSTEM ===================== -->
-<section id="service" class="alt">
+<section id="service" class="alt view" data-v="service">
 <div class="ghost-sec" aria-hidden="true">08</div>
   <div class="container">
     <div class="sec-head">
@@ -1016,7 +1025,7 @@ footer p{line-height:1.85}
 </section>
 
 <!-- ===================== POST-GRANT ===================== -->
-<section id="after">
+<section id="after" class="view" data-v="after">
 <div class="ghost-sec" aria-hidden="true">09</div>
   <div class="container">
     <div class="sec-head">
@@ -1051,7 +1060,7 @@ footer p{line-height:1.85}
 </section>
 
 <!-- ===================== OFFICIAL ===================== -->
-<section id="official">
+<section id="official" class="view" data-v="official">
 <div class="ghost-sec" aria-hidden="true">10</div>
   <div class="container">
     <div class="sec-head">
@@ -1123,20 +1132,6 @@ footer p{line-height:1.85}
 </footer>
 
 
-
-<!-- ===== 右侧章节索引 ===== -->
-<nav class="rail-nav" aria-label="章节索引">
-  <a href="#what"><span class="n">01</span>专利是什么</a>
-  <a href="#types"><span class="n">02</span>三种类型</a>
-  <a href="#why"><span class="n">03</span>申请价值</a>
-  <a href="#flow"><span class="n">04</span>申请流程</a>
-  <a href="#faq"><span class="n">05</span>常见问题</a>
-  <a href="#tools"><span class="n">06</span>实用工具</a>
-  <a href="#knowledge"><span class="n">07</span>知识深化</a>
-  <a href="#service"><span class="n">08</span>服务全景</a>
-  <a href="#after"><span class="n">09</span>授权之后</a>
-  <a href="#official"><span class="n">10</span>官方渠道</a>
-</nav>
 
 <!-- ===== AI 专利顾问 ===== -->
 <button class="ai-fab" id="aiFab" aria-label="打开专利顾问">
@@ -1394,25 +1389,26 @@ feeTabRender();
 })();
 
 
-/* ===== 右侧章节索引：点击直达 + 当前章节高亮（静态克制） ===== */
+
+
+/* ===== 多页面视图路由（横向页签切换，每章一页） ===== */
 (function(){
-  var rail=document.querySelector('.rail-nav');
-  if(!rail)return;
-  rail.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      var t=document.getElementById(this.getAttribute('href').slice(1));
-      if(t)t.scrollIntoView({behavior:'smooth'});
+  var views=['what','types','why','flow','faq','tools','knowledge','service','after','official'];
+  function show(id){
+    views.forEach(function(v){
+      var el=document.getElementById(v);
+      if(el)el.classList.toggle('active',v===id);
     });
-  });
-  var ids=['what','types','why','flow','faq','tools','knowledge','service','after','official'];
-  function updateActive(){
-    var cur=ids[0],pos=(window.scrollY||document.documentElement.scrollTop)+140;
-    ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=pos)cur=id;});
-    rail.querySelectorAll('a').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+    document.querySelectorAll('.topnav a').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#view-'+id);});
+    window.scrollTo(0,0);
   }
-  window.addEventListener('scroll',updateActive,{passive:true});
-  updateActive();
+  function route(){
+    var h=(location.hash||'').replace('#view-','');
+    if(views.indexOf(h)<0)h='what';
+    show(h);
+  }
+  window.addEventListener('hashchange',route);
+  route();
 })();
 
 </script>
