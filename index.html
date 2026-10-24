@@ -432,7 +432,25 @@ main{display:block}
   .topnav a.active{background:transparent;color:var(--acid);border-color:transparent}
 }
 
-</style>
+/* ===== 申请流程页 · 阶段总览 + 时间费用表 ===== */
+.flow-overview{display:grid;grid-template-columns:1fr;gap:12px;margin:30px 0 6px}
+@media(min-width:640px){.flow-overview{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.flow-overview{grid-template-columns:repeat(4,1fr)}}
+.fo-item{padding:16px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.fo-item .n{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--acid);background:#eef6d0;padding:3px 9px;border-radius:5px;margin-bottom:9px;letter-spacing:.04em}
+.fo-item h4{font-size:15px;color:var(--ink);margin:0 0 6px;font-weight:700}
+.fo-item p{font-size:13px;color:#7b8494;margin:0;line-height:1.55}
+.flow-table{margin-top:46px}
+.ft-title{font-size:20px;color:var(--ink);margin:0 0 16px;font-weight:700}
+.ft-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+.ft-wrap table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:760px}
+.ft-wrap th,.ft-wrap td{padding:12px 14px;text-align:left;font-size:13px;vertical-align:top;border-bottom:1px solid var(--line);line-height:1.55}
+.ft-wrap th{font-size:12px;color:#7b8494;font-weight:600;background:#f6f3ea}
+.ft-wrap tr:last-child td{border-bottom:none}
+.ft-wrap td:first-child{font-weight:700;color:var(--ink);width:12%}
+.ft-wrap td:nth-child(3){width:16%}
+.ft-wrap td:nth-child(4){width:16%}
+.ft-note{margin-top:12px;font-size:12.5px;color:#7b8494}
 </head>
 <body>
 <header class="topbar">
@@ -643,6 +661,12 @@ main{display:block}
       <h2>从想法到专利证书，走对这七步</h2>
       <p class="lead">以发明专利为主线的完整路径（实用新型、外观设计跳过第 5 步的实质审查）。每一步下方都列出你会遇到的常见问题，可在「常见问题」板块查看解决办法。</p>
     </div>
+    <div class="flow-overview">
+      <div class="fo-item"><span class="n">阶段一 · 申请前</span><h4>检索 + 撰写</h4><p>官方平台查新判断可行性；备齐请求书、说明书、权利要求书。申请前不要自行公开。</p></div>
+      <div class="fo-item"><span class="n">阶段二 · 提交 + 初审</span><h4>锁定申请日</h4><p>在线提交取得申请日与申请号；缴纳费用（可费减）；发明约 18 个月公开。</p></div>
+      <div class="fo-item"><span class="n">阶段三 · 实质审查</span><h4>发明需实审</h4><p>自申请日起 3 年内请求实质审查，核查三性并答复意见；实用新型/外观无此步。</p></div>
+      <div class="fo-item"><span class="n">阶段四 · 授权后</span><h4>缴年费维持</h4><p>逐年缴纳年费，逾期可能失效；著录项目变更要及时办理。</p></div>
+    </div>
     <div class="flow-wrap">
       <div class="flow-line">
         <div class="t">Step 1<br>检索</div>
@@ -728,6 +752,23 @@ main{display:block}
           </ul>
         </div>
       </div>
+    </div>
+    <div class="flow-table">
+      <h3 class="ft-title">申请各阶段 · 关键时间与费用总览</h3>
+      <div class="ft-wrap"><table>
+        <colgroup><col style="width:12%"><col style="width:28%"><col style="width:16%"><col style="width:18%"><col style="width:26%"></colgroup>
+        <thead><tr><th>阶段</th><th>做什么</th><th>时间节点</th><th>费用（官费）</th><th>常见坑</th></tr></thead>
+        <tbody>
+          <tr><td>检索</td><td>官方「专利检索及分析系统」查新，判断方案是否已被公开/在先申请</td><td>申请前</td><td>免费</td><td>不查新就撰写，易踩在先技术导致驳回</td></tr>
+          <tr><td>撰写</td><td>备齐请求书、说明书、权利要求书（实用新型需附图）；外观提交图片/照片</td><td>申请前</td><td>0（自行撰写）</td><td>权利要求过宽/过窄；申请前已公开破坏新颖性</td></tr>
+          <tr><td>提交</td><td>官方「专利业务办理系统」在线提交，取得申请日与申请号</td><td>提交当日</td><td>发明 900+50 / 实用·外观 500</td><td>材料不全被补正；个人信息走非官方渠道</td></tr>
+          <tr><td>初审</td><td>审查文件是否齐全、格式规范、有无明显缺陷</td><td>提交后数月</td><td>—</td><td>说明书/附图不清被要求补正</td></tr>
+          <tr><td>实审（发明）</td><td>请求实质审查并答复审查意见，核查新颖性/创造性/实用性</td><td>自申请日起 3 年内</td><td>实审费 2500</td><td>超期未请求实审 → 视为撤回</td></tr>
+          <tr><td>授权</td><td>办理登记手续，缴纳授权当年年费与印花税</td><td>授权公告时</td><td>当年年费 + 印花税</td><td>漏缴印花税/未办登记</td></tr>
+          <tr><td>维持</td><td>逐年缴纳年费，保持专利权有效</td><td>每年到期前</td><td>按年递增</td><td>漏缴年费 → 宽限期后权利终止</td></tr>
+        </tbody>
+      </table></div>
+      <p class="ft-note">官费为未减缴参考价，符合条件可减缴 85%（或共同申请 70%）；时间周期依国家知识产权局公开口径，实际以办理为准。精确金额可用「实用工具 → 费用估算器」试算。</p>
     </div>
   </div>
 </section>
